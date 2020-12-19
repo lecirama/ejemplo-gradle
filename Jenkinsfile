@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
         stage('stage_Incial'){
             steps {
@@ -17,10 +16,7 @@ pipeline {
                     }
                     stage('run'){
                         sh 'nohup bash gradlew bootRun &'
-                        sleep(20) {
-                            // on interrupt do
-                        }
-
+                        sleep(20)
                     }
                     stage('rest'){
                         sh ''curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing''
