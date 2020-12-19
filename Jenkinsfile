@@ -18,7 +18,7 @@ pipeline {
                      stage('run'){
 
                     }
-                    stage('test'){
+                    stage('rest'){
 
                     }
                      stage('nexus'){
