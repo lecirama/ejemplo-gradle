@@ -23,7 +23,7 @@ pipeline {
 
                     }
                     stage('rest'){
-                        sh "curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing"
+                        sh 'curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing'
 
                     }
                      ​stage('Upload Nexus') {
