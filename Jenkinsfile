@@ -18,8 +18,9 @@ pipeline {
                         sh 'nohup bash gradlew bootRun &'
                     }
                     stage('rest'){
-                        sleep(20)
+
                         sh 'curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing'
+                         sleep(20)
 
                     }
                     stage('Upload Nexus') {
