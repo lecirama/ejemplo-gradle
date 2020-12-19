@@ -16,19 +16,20 @@ pipeline {
 
                     }
                      stage('run'){
-                        sh './gradlew'
+                        sh 'nohup bash gradlew bootRun &'
 
                     }
                     stage('rest'){
                         sh "curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing"
 
                     }
-                     stage('nexus'){
-
+                     ​stage('Upload Nexus') {
+                            steps {
+                                nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'jar', filePath: '/Users/maricelrodriguez/Diplomado/Repositorio/ejemplo-gradle/build/libs/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]], tagName: 'jar'   
+                            }
+                         }
                     }
                 } 
-
             }
          }
-    }
-}          
+}  
