@@ -19,7 +19,7 @@ pipeline {
                     }
                     stage('rest'){
 
-                        sh "curl -x -G http://localhost:8086/rest/mscovid/test?msg=testing"
+                        sh "curl http://localhost:8086/rest/mscovid/test?msg=testing"
                          sleep(20)
 
                     }
