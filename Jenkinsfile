@@ -8,7 +8,7 @@ pipeline {
                     stage('build & Test'){
 
                     }
-                    stage('sonar){
+                    stage('sonar'){
 
                     }
                      stage('run'){
