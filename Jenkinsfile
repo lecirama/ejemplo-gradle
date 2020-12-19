@@ -16,9 +16,11 @@ pipeline {
 
                     }
                      stage('run'){
+                        sh './gradlew'
 
                     }
                     stage('rest'){
+                        sh "curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing"
 
                     }
                      stage('nexus'){
