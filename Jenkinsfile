@@ -18,7 +18,7 @@ pipeline {
     }
     post{
         success{
-            slackSend color: 'good', message: "Build Success: [Maricel Rodriguez][${env.STG_NAME}][${params.eleccion}] Ejecución exitosa.", teamDomain: 'ºdipdevopsusach2020', tokenCredentialId: 'slack-token'
+            slackSend color: 'good', message: "Build Success: [Maricel Rodriguez][${env.STG_NAME}][${params.eleccion}] Ejecución exitosa.", teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack-token'
         }
         failure{
             slackSend color: 'danger', message: "Build Failure: [Maricel Rodriguez][${env.STG_NAME}][${params.eleccion}] Ejecución fallida en stage [${env.STG_NAME}].", teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack-token'

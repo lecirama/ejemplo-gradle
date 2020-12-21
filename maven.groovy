@@ -14,7 +14,7 @@ def call(){
         }
         stage('Jar_Code') {
             env.STG_NAME = 'Jar_Code'
-            sh './mvnw clean package -e'       
+            sh './mvnw clean package -e'
         }
     	stage('SonarQube') {
             env.STG_NAME = 'SonarQube_Code'
