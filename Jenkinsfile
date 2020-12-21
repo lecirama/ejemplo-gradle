@@ -1,12 +1,12 @@
 pipeline {
     agent any
-  /* parameters {
+    /*parameters {
         choice(name: 'eleccion', choices: ['Gradle', 'Maven'], description: 'Herramientas de Construcción')
-    }-*/
+    }*/
     stages {
         stage('Pineline') {
             steps {
-                scrip{
+                script{
                    //Invocacion al archivo dependiendo del paramentro generado
                     switch(params.eleccion){
                         case 'Gradle';
