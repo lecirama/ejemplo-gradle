@@ -1,35 +1,53 @@
 pipeline {
     agent any
+  /* parameters {
+        choice(name: 'eleccion', choices: ['Gradle', 'Maven'], description: 'Herramientas de Construcción')
+    }-*/pipeline {
+    agent any
+    parameters {
+        choice(name: 'eleccion', choices: ['Gradle', 'Maven'], description: 'Herramientas de Construcción')
+    }
     stages {
-        stage('stage_Incial'){
+        stage('Pineline') {
             steps {
-                script{
-                    stage('build & Test'){
-                        sh './gradlew clean build'
-                    }
-                    stage('sonar'){
-                        def scannerHome = tool 'sonar';
-                        withSonarQubeEnv('sonar') {
-                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build"
-                        }
-
-                    }
-                    stage('run'){
-                        sh "nohup bash gradlew bootRun &"
-                        sleep(10)
-                    }
-                    stage('rest'){
-
-                        sh "curl http://localhost:8086/rest/mscovid/test?msg=testing"
-                         sleep(5)
-
-                    }
-                    stage('Upload Nexus') {
-                            steps {
-                               nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: 'jar', filePath: '/Users/maricelrodriguez/.jenkins/workspace/ultib_gradle_feature-dir-inicial/build/libs/DevOpsUsach2020-0.0.1.jar']], mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '1.0.0']]]                           }
-                         }
-                    }
-                } 
+                scrip{
+                   //Invocacion al archivo dependiendo del paramentro generado
+                    switch(params.eleccion){
+                        case 'Gradle';
+                            //llamada a gradle.grovy
+                            def ejecucion = load 'gradle.groovy'
+                            ejecucion.call()
+                        break
+                        default;
+                            //llamar a maven.grovy
+                            def ejecucion = load 'maven.groovy'
+                            ejecucion.call()
+                        break
+                }
             }
-         }
-}  
+        }
+    }
+}
+}
+    stages {
+        stage('Pineline') {
+            steps {
+                scrip{
+                   //Invocacion al archivo dependiendo del paramentro generado
+                    switch(params.eleccion){
+                        case 'Gradle';
+                            //llamada a gradle.grovy
+                            def ejecucion = load 'gradle.groovy'
+                            ejecucion.call()
+                        break
+                        default;
+                            //llamar a maven.grovy
+                            def ejecucion = load 'maven.groovy'
+                            ejecucion.call()
+                        break
+                }
+            }
+        }
+    }
+}
+}
