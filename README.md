@@ -9,4 +9,4 @@
 * Background: nohup bash gradlew bootRun &
 
 ### Testing Application
-* curl -X GET 'http://localhost:8082/rest/mscovid/test?msg=testing'
+* curl -X GET 'http://localhost:8086/rest/mscovid/test?msg=testing'
