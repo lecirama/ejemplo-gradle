@@ -1,2 +1,12 @@
-# ejemplo-gradle
-Repositorio de aplicacion Java basado en gradle
+
+## Linux & Mac
+
+### Build Code, Test,Jar
+* ./gradle clean
+
+### Run Jar
+* Local:      ./gradlew bootRun 
+* Background: nohup bash gradlew bootRun &
+
+### Testing Application
+* curl -X GET 'http://localhost:8082/rest/mscovid/test?msg=testing'
