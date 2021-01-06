@@ -1,6 +1,4 @@
-
 ## Linux & Mac
-
 ### Build Code, Test,Jar
 * ./gradle clean
 
